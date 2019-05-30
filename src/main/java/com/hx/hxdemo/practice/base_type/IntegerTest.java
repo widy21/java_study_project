@@ -36,5 +36,8 @@ public class IntegerTest {
         System.out.println("i4=40   " + (i4 == 40));
 
         System.out.println("40=i5+i6   " + (40 == i5 + i6));
+
+        System.out.println(Long.parseLong("2535360000"));
+        System.out.println(Long.MAX_VALUE);
     }
 }
