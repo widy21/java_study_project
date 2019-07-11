@@ -7,8 +7,8 @@ public class Parent {
     /**
      * 必须有，否则子类报错。
      */
-    public Parent(){
-    }
+//    public Parent(){
+//    }
 
     public Parent(String name){
         this.name = name;
