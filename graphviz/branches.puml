@@ -1,10 +1,26 @@
 @startuml
-(*)  --> "check input"
-If "input is verbose" then
---> [Yes] "turn on verbosity"
---> "run command"
-else
---> "run command"
-Endif
--->(*)
+'scale 600 width
+
+'[*] -> State1
+Master --> 测试分支:1. checkout
+'State1 --> [*] : Aborted
+Master --> 开发分支A:1. checkout
+Master --> 开发分支B:1.checkout
+'测试分支 --> [*] : Aborted
+state 开发分支A {
+  state "本地研发&&自测" as long1
+  [*] --> long1
+  long1 --> long1 : 新需求
+  long1 --> pushA: 研发、自测完成
+}
+state 开发分支B {
+  state "开发流程与A相同" as long2
+}
+开发分支A --> 测试分支 : 2. merge
+开发分支B --> 测试分支 : 2. merge
+测试分支 --> 39测试服 : 3. 部署测试服测试
+39测试服 --> merge到Master : 4. 测试完成
+state merge到Master {
+  state "release版本待发布" as long3
+}
 @enduml
