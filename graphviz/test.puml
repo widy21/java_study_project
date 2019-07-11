@@ -1,0 +1,60 @@
+@startuml
+autonumber
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+skinparam sequence {
+	ArrowColor DeepSkyBlue
+	ActorBorderColor DeepSkyBlue
+	LifeLineBorderColor blue
+	LifeLineBackgroundColor #A9DCDF
+
+	ParticipantBorderColor DeepSkyBlue
+	ParticipantBackgroundColor DodgerBlue
+	ParticipantFontName Impact
+	ParticipantFontSize 17
+	ParticipantFontColor #A9DCDF
+
+	ActorBackgroundColor aqua
+	ActorFontColor DeepSkyBlue
+	ActorFontSize 17
+	ActorFontName Aapex
+}
+
+actor web
+participant "鲲鹏" as KP
+participant "master" as MAST
+participant "minion" as MIN
+participant "sydic master" as SY
+participant "hosts(待装salt机器)" as H
+
+KP -> MAST: 选择syndic节点、待装salt机器，生成任务
+KP -> MAST: 执行任务
+KP -> MAST: 中间层通过salt-api调用[现有框架]
+
+activate MAST
+MAST -> MIN: salt命令调用
+activate MIN
+
+MIN -> SY: ssh调用所选syndic
+
+activate SY
+SY -> H: begin_roster
+SY -> H: begin_test_ping
+SY -> H: begin_deploy
+
+activate H
+H-->SY:WorkDone
+deactivate H
+
+
+SY --> MIN: WorkDone
+deactivate SY
+
+MIN --> MAST: WorkDone
+deactivate MIN
+
+MAST --> KP: WorkDone
+deactivate MAST
+
+@enduml
