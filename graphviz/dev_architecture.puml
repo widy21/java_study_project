@@ -1,0 +1,22 @@
+@startuml
+
+database mysql  {
+  storage 存储配置数据
+}
+
+node 静态配置中心
+node 监控模块
+node 跨平台日志查询系统
+node grafana监控展示系统
+'node node5
+静态配置中心 -- mysql
+静态配置中心 -- 监控模块
+静态配置中心 .. 跨平台日志查询系统
+静态配置中心 ~~ grafana监控展示系统
+'静态配置中心 == node5
+
+
+note left of 静态配置中心 : 基于guns.\n自动生成页面及java代码。\n后期可做微服务拓展\n暴露restful接口.\n所有需要获取配置的地方都调用接口。
+'note right of grafana监控展示系统 : 可以将变量值存储在配置中心\n后期可做微服务拓展
+
+@enduml

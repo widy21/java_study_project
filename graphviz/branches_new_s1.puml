@@ -42,6 +42,7 @@ state dev_group下master {
 '  state "开发流程与A相同" as long2
 '}
 dev_group下master --> 测试分支 : 2. merge request
+dev_group下master -[#YellowGreen]-> 39测试服 : [紧急上线]单独部署测试
 '开发分支B --> 测试分支 : 2. merge
 测试分支 --> 39测试服 : 3. 部署测试服测试
 '39测试服 --> merge到Master : 4. 测试完成
