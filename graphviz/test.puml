@@ -25,7 +25,8 @@ actor web
 participant "鲲鹏" as KP
 participant "master" as MAST
 participant "minion" as MIN
-participant "sydic master" as SY
+'participant "sydic master" as SY
+participant "ansible节点" as SY
 participant "hosts(待装salt机器)" as H
 
 KP -> MAST: 选择syndic节点、待装salt机器，生成任务
@@ -36,7 +37,7 @@ activate MAST
 MAST -> MIN: salt命令调用
 activate MIN
 
-MIN -> SY: ssh调用所选syndic
+MIN -> SY: 通过ansible节点ssh调用所选hosts
 
 activate SY
 SY -> H: begin_roster

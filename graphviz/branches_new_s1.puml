@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor LightYellow
+skinparam state {
+'  StartColor MediumBlue
+'  EndColor Red
+'  BackgroundColor Peru
+  BackgroundColor<<Warning>> Olive
+'  BorderColor Gray
+'  FontName Impact
+}
+
+'[*] -> State1
+Master --> 测试分支:1. checkout
+Master -[#blue]->dev_group下master: 1. fork
+Master -[#red]->dev_group下master: 4. 测试通过后, merge到origin_master,集成master上其他最新功能
+dev_group下master -[#red]->Master: 5. merge request
+
+state Master{
+    state "上线稳定版本分支" <<Warning>>
+  }
+
+state dev_group下master {
+  origin_master -> dev_branch:研发前，checkout
+  dev_branch -> origin_master:研发完成，push
+  state dev_branch{
+    state "研发分支" <<Warning>>
+  }
+  state origin_master{
+    state "自己group下Master分支" <<Warning>>
+  }
+}
+
+'Master --> 开发分支A:1. checkout
+'Master --> 开发分支B:1.checkout
+'state 开发分支A {
+'  state "本地研发&&自测" as long1
+'  [*] --> long1
+'  long1 --> long1 : 新需求
+'  long1 --> pushA: 研发、自测完成
+'}
+'state 开发分支B {
+'  state "开发流程与A相同" as long2
+'}
+dev_group下master --> 测试分支 : 2. merge request
+'开发分支B --> 测试分支 : 2. merge
+测试分支 --> 39测试服 : 3. 部署测试服测试
+'39测试服 --> merge到Master : 4. 测试完成
+'state merge到Master {
+'  state "release版本待发布" as long3
+'}
+
+note right of dev_group下master : 从master分支fork到自己的group下，\n并checkout出新分支进行开发。
+note right of 测试分支 : dev_branch功能研发完成后，\nmerge request到 [upstream:测试分支] 下。
+note right of Master : 上线以Master分支为主，\n保证此分支代码为最新release版本。
+
+@enduml

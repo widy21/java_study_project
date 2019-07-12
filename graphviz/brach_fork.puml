@@ -1,0 +1,17 @@
+@startuml
+
+start
+
+if (master分支) then
+  fork
+	:开发分支 1;
+'	->:测试分支(eg:master_2019_06);
+  fork again
+	:开发分支 2;
+  end fork
+else ()
+  :测试分支(eg:master_2019_06);
+'  :Treatment 2;
+endif
+
+@enduml
