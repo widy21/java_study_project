@@ -17,9 +17,16 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<jackson.version>2.8.7</jackson.version>
+		<guava.version>23.0</guava.version>
 	</properties>
 
 	<dependencies>
+		<!-- google工具包 -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
