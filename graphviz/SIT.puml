@@ -1,0 +1,66 @@
+@startuml
+autonumber
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+skinparam sequence {
+	ArrowColor DeepSkyBlue
+	ActorBorderColor DeepSkyBlue
+	LifeLineBorderColor blue
+	LifeLineBackgroundColor #A9DCDF
+
+	ParticipantBorderColor DeepSkyBlue
+	ParticipantBackgroundColor DodgerBlue
+	ParticipantFontName Impact
+	ParticipantFontSize 17
+	ParticipantFontColor #A9DCDF
+
+	ActorBackgroundColor aqua
+	ActorFontColor DeepSkyBlue
+	ActorFontSize 17
+	ActorFontName Aapex
+}
+
+actor developer
+participant "feature" as KP
+participant "test1" as MAST
+participant "release分支" as MIN
+'participant "sydic master" as SY
+participant "dev" as SY
+'participant "hosts(待装salt机器)" as H
+
+'KP -> MAST: 基于dev分支checkout
+KP -> MAST: 基于test1分支checkout；研发完成，merge回test1
+KP -> MAST: 基于test1分支打包部署到【测试环境】测试
+KP -> MAST: 测试通过后，部署到【UAT测试环境】
+
+activate MAST
+MAST -> MIN: 【UAT测试环境】测试通过后
+'MAST -> MIN: merge到test分支
+MAST -> MIN: merge到release分支
+activate MIN
+
+MIN -> SY: release分支打包部署到【测试环境】做集成测试
+MIN -> SY: 测试通过后，打包上【PROD环境】
+MIN -> SY: 【PROD环境】测试通过后，merge到dev分支，并打tag
+
+activate SY
+'SY -> H: begin_roster
+'SY -> H: begin_test_ping
+'SY -> H: begin_deploy
+'
+'activate H
+'H-->SY:WorkDone
+'deactivate H
+
+
+'SY --> MIN: WorkDone
+deactivate SY
+
+MIN --> MAST: merge到test1分支
+deactivate MIN
+
+'MAST --> KP: WorkDone
+deactivate MAST
+
+@enduml
