@@ -11,6 +11,8 @@ public class HxDemoApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
+		System.out.println("once");
 	}
 
 }
