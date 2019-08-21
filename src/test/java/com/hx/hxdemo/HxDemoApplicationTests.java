@@ -13,6 +13,7 @@ public class HxDemoApplicationTests {
 	public void contextLoads() {
 
 		System.out.println("once");
+		System.out.println("twice");
 	}
 
 }
