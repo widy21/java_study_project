@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 和最大子序列
+ * 最大子序列和
  */
 public class MaxSeq {
 

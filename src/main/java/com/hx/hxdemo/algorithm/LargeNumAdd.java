@@ -4,18 +4,29 @@ import com.google.common.collect.Lists;
 
 import java.util.*;
 
+/**
+ * 大数加法
+ */
 public class LargeNumAdd {
 
     public static String largeNumAdd(String num1, String num2) throws Exception {
 
 //        String num1 = "1234";
 //        String num2 = "127";
+
+        // 异常情况判断
         if (!num1.matches("\\d+") || !num2.matches("\\d+")) {
             throw new Exception("字符串中包含非数字");
         }
+
+        // 转换成char数组
         char[] num1Array = num1.toCharArray();
         char[] num2Array = num2.toCharArray();
+
+        // 确定循环length
         int len = num1Array.length > num2Array.length ? num1Array.length : num2Array.length;
+
+        // 把长度短的数组用'0'补齐
         if (num1Array.length > num2Array.length) {
             for (int i = num2Array.length; i < len; i++) {
                 char[] temp = new char[len];
@@ -26,11 +37,14 @@ public class LargeNumAdd {
         }
         if (num1Array.length < num2Array.length) {
             for (int i = num1Array.length; i < len; i++) {
+                //这里也需要扩容copyArray
                 num1Array[i] = '0';
             }
         }
         //        String num1 = "1234";
         //        String num2 = "1270";
+
+        // 开始计算
         int[] resultArray = new int[len];
         List l = Lists.newArrayList();
         //从个位开始运算
@@ -41,9 +55,12 @@ public class LargeNumAdd {
                 resultArray[i] = sum % 10;
                 resultArray[i - 1] = sum / 10;
             }
+            // 计算结果添加到list
             l.add(resultArray[i] + "");
         }
+        // 集合反转
         Collections.reverse(l);
+        // join元素
         return String.join("", l);
 
 
