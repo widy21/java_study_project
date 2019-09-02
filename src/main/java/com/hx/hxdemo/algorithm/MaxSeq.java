@@ -25,7 +25,7 @@ public class MaxSeq {
                 sum+=args[j];
                 if(sum>max){
                     max=sum;
-                    tempResult.add(j);
+                    tempResult.add(args[j]);
 //                    ret = null;
 //                    ret = Arrays.copyOfRange(args,i,args.length-1);
                 }
