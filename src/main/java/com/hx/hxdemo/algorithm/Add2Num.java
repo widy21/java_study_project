@@ -1,6 +1,9 @@
 package com.hx.hxdemo.algorithm;
 
-
+/**
+ * 大数相加
+ * 链表实现
+ */
 public class Add2Num {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -56,6 +59,11 @@ public class Add2Num {
             System.out.println(p.val);
             p = p.next;
         }
+
+//        String s = "abc";
+//        System.out.println(s.value);
+//        System.out.println(s.indexOf(""));
+
     }
 }
 
