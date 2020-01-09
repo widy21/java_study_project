@@ -27,10 +27,10 @@ public class CyclicBarrierExample {
     }
 
     private static void test(String name) throws BrokenBarrierException, InterruptedException {
-        System.out.println("before..");
-        System.out.println(String.format("current thread name = {%s}", name));
+        System.out.println(name+" before..");
+        System.out.println(String.format("{%s} processing...", name));
         cyclicBarrier.await();
-        System.out.println("after..");
+        System.out.println(name+" after..");
     }
 }
 
