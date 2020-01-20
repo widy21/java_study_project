@@ -21,7 +21,7 @@ public class ThreadPoolExecutorDemo {
                 new LinkedBlockingDeque<Runnable>(3),
                 Executors.defaultThreadFactory(),
 //java.util.concurrent.RejectedExecutionException
-// -- 理论上超过8个就会报错，实际测试13个经常会报错
+//                超出线程就报 java.util.concurrent.RejectedExecutionException -- 理论上超过8个就会报错，实际测试13个经常会报错
 //                new ThreadPoolExecutor.AbortPolicy()
 //                如果线程池中线程处理不过来，就交给调用线程main去执行。
 //                new ThreadPoolExecutor.CallerRunsPolicy()
