@@ -50,12 +50,29 @@ public class ToSql {
 //                "BusiSummary","CustPayFee","MerchantFee","AppType", "FeeFlag","Remark1","Remark2", "TransCodeId","Remark3","Remark4","Remark5"
 //        };
 
-        String[] strArr = {"subAccount"};
+        String[] strArr = {"serviceType","remark","network","wareHouseAsset","httpsRedirect","userErpStateList","domain","owner","primary","wafMode","platform","manageErp","updatedAt","department","wafPolicy","dnsList","statusDesc","id","projectName","appAssetList"
+        };
+
+        String tableName = "t_domain_asset";
+        String comment = "5.14 查询应用流量监控关联的域名";
+
+        StringBuffer sb = new StringBuffer();
+        sb.append("CREATE TABLE "+tableName+" (\n");
+        sb.append("`id` int(10) NOT NULL AUTO_INCREMENT,\n");
+        sb.append("`app_name` varchar(255) NOT NULL,\n");
+        sb.append("`platform` varchar(255) NOT NULL DEFAULT '',\n");
+
         for (int i = 0; i <strArr.length ; i++) {
             String s = upperCharToUnderLine(strArr[i]);
-            System.out.println(s);
+            sb.append(String.format("`%s` varchar(255) NOT NULL DEFAULT '',\n", s));
+//            System.out.println(s);
         }
 
+        sb.append("`create_at` datetime NOT NULL COMMENT 'create time',\n");
+        sb.append("`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n");
+        sb.append("PRIMARY KEY (`id`)\n");
+        sb.append(") ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='5 应用资产-"+comment+"'\n");
 
+        System.out.println(sb.toString());
     }
 }
