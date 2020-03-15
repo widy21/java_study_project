@@ -50,10 +50,10 @@ public class ToSql {
 //                "BusiSummary","CustPayFee","MerchantFee","AppType", "FeeFlag","Remark1","Remark2", "TransCodeId","Remark3","Remark4","Remark5"
 //        };
 
-        String[] strArr = {"serviceType","remark","network","wareHouseAsset","httpsRedirect","userErpStateList","domain","owner","primary","wafMode","platform","manageErp","updatedAt","department","wafPolicy","dnsList","statusDesc","id","projectName","appAssetList"
-        };
+        String[] strArr = {"columnFieldTags","dbComment","dbUUID","tableBusinessTags","sensitiveTags","updatedAt","appAssetCount","dbName","createdAt"};
 
-        String tableName = "t_domain_asset";
+        //todo --
+        String tableName = "t_logic_database_asset";
         String comment = "5.14 查询应用流量监控关联的域名";
 
         StringBuffer sb = new StringBuffer();
