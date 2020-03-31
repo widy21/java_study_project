@@ -1,0 +1,53 @@
+@startuml
+autonumber
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+
+skinparam sequence {
+	ArrowColor DeepSkyBlue
+	ActorBorderColor DeepSkyBlue
+	LifeLineBorderColor blue
+	LifeLineBackgroundColor #A9DCDF
+
+	ParticipantBorderColor DeepSkyBlue
+	ParticipantBackgroundColor DodgerBlue
+	ParticipantFontName Impact
+	ParticipantFontSize 17
+	ParticipantFontColor #A9DCDF
+
+	ActorBackgroundColor aqua
+	ActorFontColor DeepSkyBlue
+	ActorFontSize 17
+	ActorFontName Aapex
+}
+
+actor 用户
+participant "权限转移系统" as QXZY
+participant “BDP权限汇总系统" as HZXT
+participant "产品线" as CPX
+'participant "HOTFIX" as SY
+
+QXZY -> HZXT: 交接项查询
+
+
+activate HZXT
+HZXT -> CPX: 交接项查询
+activate CPX
+CPX -> HZXT: 返回交接项查询结果
+'activate CPX
+deactivate CPX
+HZXT -> QXZY: 返回交接项查询结果
+deactivate HZXT
+
+QXZY -> HZXT: 根据返回交接项，进行权限转移
+activate HZXT
+HZXT -> CPX: 权限转移
+activate CPX
+CPX -> HZXT: 返回权限转移结果
+deactivate CPX
+HZXT -> QXZY: 返回权限转移结果
+
+
+deactivate HZXT
+
+@enduml

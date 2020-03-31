@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by huaxiao on 2020/3/29.
+ * Created by huaxiao on 2020/3/20.
  * 习题1：一个列表，排重，不能用set，也不能用字典
  * <p>
  * 1 生成一个空列表result，存储排重后的元素

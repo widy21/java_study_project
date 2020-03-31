@@ -1,22 +1,8 @@
 package com.hx.grzl;
 
 /**
- * Created by huaxiao on 2020/3/29.
+ * Created by huaxiao on 2020/3/20.
  * 习题2：输出大写字母、小写字母、大小写字母、数字、大小写字母和数字
- * <p>
- * >>> lower = ""
- * >>> for i in range(97,123):
- * ...     lower += chr(i)
- * ...
- * >>> print(lower)
- * Abcdefghijklmnopqrstuvwxy
- * <p>
- * <p>
- * >>> upper = ""
- * >>> for i in range(65,91):
- * ...     upper += chr(i)
- * ...
- * >>> print(upper)
  */
 public class TestNo2 {
     public static void main(String[] args) {
