@@ -8,6 +8,7 @@ public class TestNo8 {
     public static void main(String[] args) {
         for (int i = 65; i < 91; i++) {
             System.out.print(String.valueOf((char)(i))+(char)(i+32));
+//            System.out.print(String.valueOf((char)(i)));
         }
         System.out.println();
     }
