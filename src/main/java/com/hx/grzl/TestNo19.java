@@ -38,9 +38,9 @@ public class TestNo19 {
 
     public static void main(String[] args) {
         int nextInt = new Random().nextInt(2);
-        System.out.println(nextInt);
+        System.out.println("nextInt="+nextInt);
         TestNo19 util = new TestNo19();
-        // 如果是随机生成的1生成一个字母密码元素
+        // 如果是随机生成的是1，则生成一个字母密码元素
         if(nextInt == 1){
             System.out.println(util.genLetters());
         }else {//否则生成数字密码元素
