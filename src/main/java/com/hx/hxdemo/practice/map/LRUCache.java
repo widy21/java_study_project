@@ -26,4 +26,14 @@ class LRUCache<K, V> extends LinkedHashMap<K, V> {
         // 当 map中的数据量大于指定的缓存个数的时候，就自动删除最老的数据。
         return size() > CACHE_SIZE;
     }
+
+    public static void main(String[] args) {
+        LRUCache<String,Integer> lc = new LRUCache<>(2);
+        lc.put("k1",1);
+        lc.put("k2",2);
+        lc.put("k3",3);
+        lc.put("k4",4);
+        lc.put("k5",5);
+        System.out.println(lc);
+    }
 }
