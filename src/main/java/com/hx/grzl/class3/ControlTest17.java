@@ -24,5 +24,8 @@ public class ControlTest17 {
             }
         }
         System.out.println("count="+count);
+
+        int age = 0;
+        System.out.println(age);
     }
 }
