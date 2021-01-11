@@ -26,9 +26,11 @@ public class TestMatrix {
                 //
                 if(c+1<n && arr[r][c+1] == 0){
                     c++;
+                    System.out.print(i+" ");
                 }else {
                     r++;
                     direction=down;
+                    System.out.println(i);
                     continue;
                 }
             }
@@ -37,9 +39,11 @@ public class TestMatrix {
             if(direction == down){
                 if(r+1<n && arr[r+1][c] == 0){
                     r++;
+                    System.out.println(i);
                 }else {
                     c--;
                     direction = left;
+                    System.out.print(i+" ");
                     continue;
                 }
             }
@@ -48,9 +52,11 @@ public class TestMatrix {
             if(direction == left){
                 if(c-1>=0 && arr[r][c-1] == 0){
                     c--;
+                    System.out.println(i);
                 }else {
                     r--;
                     direction=up;
+                    System.out.println(i);
                     continue;
                 }
             }
@@ -59,16 +65,19 @@ public class TestMatrix {
             if(direction == up){
                 if(r-1>=0 && arr[r-1][c] == 0){
                     r--;
+                    System.out.println(i);
                 }else {
                     c++;
                     direction=right;
+                    System.out.println(i);
                     continue;
                 }
             }
+
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(Arrays.toString(arr[i]));
-        }
+//        for (int i = 0; i < arr.length; i++) {
+//            System.out.println(Arrays.toString(arr[i]));
+//        }
     }
 }
