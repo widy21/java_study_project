@@ -1,4 +1,4 @@
-package com.hx.grzl.preclass.claz18.pro3;
+package com.hx.grzl.preclass.claz18.pro3_sync;
 
 /**
  * @program: hx-demo
