@@ -1,7 +1,6 @@
 package com.hx.grzl.preclass.claz19.homework.pro1;
 
 /**
- * @program: hx-demo
  * @description: 1、	定义一个类DayNum，
  * 声明并初始化7个int类型常量（周一 ~ 周日）；
  * 定义测试类 TestDay，打印每一天对应的中文描述（如：星期一、星期二）。
