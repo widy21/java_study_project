@@ -13,6 +13,11 @@ public class Test {
         if(today == DayDemo.FRIDAY){
             System.out.println("today is friday.");
         }
+        new A();
     }
+
+}
+
+final class A{
 
 }

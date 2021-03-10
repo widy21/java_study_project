@@ -22,7 +22,7 @@ public enum DayDemo4 {
      * 私有构造,防止被外部调用
      * @param desc
      */
-    private DayDemo4(String desc){
+    DayDemo4(String desc){
         this.desc=desc;
     }
 
@@ -34,6 +34,7 @@ public enum DayDemo4 {
         return desc;
     }
 
+
     public static void main(String[] args){
 
 //        Enum types cannot be instantiated
@@ -42,7 +43,18 @@ public enum DayDemo4 {
         for (DayDemo4 day: DayDemo4.values()) {
             System.out.println("name:"+day.name()+
                     ",desc:"+day.getDesc());
+
+            //既然enum类跟常规类的定义没什么区别（实际上enum还是有些约束的），
+            // 那么覆盖父类的方法也不会是什么难说，可惜的是父类Enum中的定义的方法只有toString方法没有使用final修饰，
+            // 因此只能覆盖toString方法，如下通过覆盖toString省去了getDesc方法：
+//            System.out.println(day);
+//            System.out.println("------------");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "this is"+desc;
     }
 
     /**
